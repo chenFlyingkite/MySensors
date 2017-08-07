@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.flyingkite.mysensors"
+        minSdkVersion 19
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        warning 'MissingTranslation'
+        ignore  'ContentDescription'
+        abortOnError false
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
+    compile 'com.android.support:design:' + rootProject.ext.supportLibraryVersion
+    compile 'com.android.support:percent:' + rootProject.ext.supportLibraryVersion
+    compile 'com.android.support:recyclerview-v7:' + rootProject.ext.supportLibraryVersion
+
+
+    // Glide for Image cache library.
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    // Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //UIL
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //compile 'com.github.nostra13.universalimageloader:1.9.5'
+}
+repositories {
+    mavenCentral()
+}
