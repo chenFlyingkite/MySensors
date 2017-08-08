@@ -1,5 +1,6 @@
 package com.flyingkite.utils;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class Cases {
         if (x > MAX)
             x = 1;
 
-        Toast.makeText(App.getContext(), "case : " + x, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "case : " + x, Toast.LENGTH_LONG).show();
     }
 
     public static boolean is(int i) { return x == i; }
@@ -44,5 +45,9 @@ public class Cases {
             }
         }
         return false;
+    }
+
+    private static Context getContext() {
+        return App.getContext();
     }
 }

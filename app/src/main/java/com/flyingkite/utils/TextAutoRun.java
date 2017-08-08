@@ -12,24 +12,31 @@ public class TextAutoRun implements Runnable {
             + "123456789-123456789=123456789%123456789#123456789@"
             + "123456789-123456789=123456789%123456789#123456789@";
 
-
     private TextView textView;
+    // for (i = min:step:max)
     private int min = 1;
-    private int now = min;
+    private int step = 1;
     private int max = ruler.length();
+    private int now = min;
     private long speed = 100; // 100ms
     private boolean started = false;
+
     public TextAutoRun(TextView txt) {
         textView = txt;
     }
 
-    public TextAutoRun min(int start) {
+    public TextAutoRun from(int start) {
         now = min = start;
         return this;
     }
 
-    public TextAutoRun end(int end) {
+    public TextAutoRun to(int end) {
         max = end;
+        return this;
+    }
+
+    public TextAutoRun step(int add) {
+        step = add;
         return this;
     }
 
@@ -65,6 +72,6 @@ public class TextAutoRun implements Runnable {
     }
 
     private int next(int value, int max) {
-        return value == max ? min : (value + 1);
+        return value == max ? min : (value + step);
     }
 }

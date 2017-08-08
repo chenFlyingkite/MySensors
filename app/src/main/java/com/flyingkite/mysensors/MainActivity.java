@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        run = new TextAutoRun((TextView) findViewById(R.id.autoText)).end(50).speed(10);
+        run = new TextAutoRun((TextView) findViewById(R.id.autoText)).to(50).speed(10);
         run.run();
     }
 

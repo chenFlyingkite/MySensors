@@ -36,4 +36,8 @@ public class Say {
         final long f = ms % 1000;
         return String.format(Locale.US, "%02d:%02d.%03d", min, sec, f);
     }
+
+    public static String ox(boolean b) {
+         return b ? "o" : "x";
+    }
 }
