@@ -21,6 +21,7 @@ public class MovieAnimatedPlayKit extends MoviePlayKit {
     @Override
     protected void onUpdatePlayPauseBtn() {
         if (mPlayUnit.isPaused()) {
+            if (switcherView().getCurrentView() == pauseView())
                 switcherView().showNext();
             pauseView().clearAnimation();
             playView().clearAnimation();
