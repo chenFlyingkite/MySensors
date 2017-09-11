@@ -1,6 +1,7 @@
 package com.cyberlink.util;
 
 import java.io.File;
+import java.io.IOException;
 
 public class FilesHelper {
     private FilesHelper() {}
@@ -58,6 +59,33 @@ public class FilesHelper {
             }
         }
         return r;
+    }
+
+
+    public static boolean mkdirs(File folder) {
+        if (folder.exists() && !folder.isDirectory()) {
+            folder.delete();
+        }
+
+        boolean r = false;
+        if (!folder.exists()) {
+            r = folder.mkdirs();
+        }
+        return r;
+    }
+
+    public static boolean noMedia(File folder) {
+        if (folder == null || folder.isFile()) return false;
+
+        File nomedia = new File(folder, ".nomedia");
+        if (nomedia.exists()) return true;
+
+        try {
+            return nomedia.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private static boolean isGone(File f) {
