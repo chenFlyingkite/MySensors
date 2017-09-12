@@ -48,9 +48,7 @@ public class FilesHelper {
         if (isGone(file)) return true;
 
         boolean r = true;
-        if (file.isFile()) {
-            r = file.delete();
-        } else if (file.isDirectory()) {
+        if (file.isDirectory()) {
             File[] inner = file.listFiles();
             if (inner != null && inner.length > 0) {
                 for (File f : inner) {
@@ -58,6 +56,7 @@ public class FilesHelper {
                 }
             }
         }
+        r &= file.delete();
         return r;
     }
 
